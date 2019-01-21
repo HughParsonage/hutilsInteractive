@@ -4,17 +4,27 @@
 \alias{print_transpose_data.table}
 \title{Print transposed data.table}
 \usage{
-print_transpose_data.table(DT, sep = "", file = "", append = FALSE)
+print_transpose_data.table(DT, sep = "", file = "", append = FALSE,
+  logical = c("¦", " ", "."), omit_if = NULL, zero = "-")
 }
 \arguments{
 \item{DT}{A \code{data.table}.}
 
 \item{sep}{Passed to \code{\link[base]{cat}}: the separation put horizontally between each row in \code{DT}.}
 
-\item{file}{Passed to \code{\link[base]{cat}}. If \code{file = ""}, the default, 
+\item{file}{Passed to \code{\link[base]{cat}}. If \code{file = ""}, the default,
 output is printed to the console. Otherwise, result will be sunk to a file.}
 
 \item{append}{Should the result be appended to \code{file}? Not applicable if \code{file = ""}.}
+
+\item{logical}{For logical columns, the characters representing \code{TRUE}, \code{FALSE}, and \code{NA}, respectively.}
+
+\item{omit_if}{Only valid if \code{nrow(DT) == 1}.
+Either a function, a single value, or a vector. If a function, \code{TRUE}
+values will be omitted; if a single value, values equal will be omitted; if a vector, values
+\code{\%in\%} will be dropped. \code{NULL} means no omission.}
+
+\item{zero}{String for zero.}
 }
 \description{
 Print transposed data.table

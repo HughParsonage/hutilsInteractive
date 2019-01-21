@@ -9,6 +9,7 @@
 #' @param file_pattern A regular expression passed to \code{list.files(pattern = file.ext)}.
 #' By default, \code{"\\.(R|r)(nw|md)?$"}, i.e. all R and Sweave files. (Does not have to be a file extension.)
 #' @param file.ext A file extension passed to the operating system if \code{use.OS} is used.
+#' @param verbose Whether to print debugging info.
 #' @return A \code{data.table}, one row per filename with a match, which includes the first line that matched.
 #' @export
 
@@ -21,7 +22,8 @@ find_pattern_in <- function(file_contents,
                             file_pattern = "\\.(R|r)(nw|md)?$",
                             file_contents_perl = TRUE,
                             file_contents_fixed = FALSE,
-                            file.ext = NULL) {
+                            file.ext = NULL,
+                            verbose = FALSE) {
   .reader <- match.fun(reader)
   if (length(file.ext)) {
     stopifnot(length(file.ext) == 1L,
@@ -39,7 +41,9 @@ find_pattern_in <- function(file_contents,
         missing(file_pattern) &&
         !is.null(file.ext) &&
         !file.exists("find--pattern.txt")) {
-      cat("LINE 43\n")
+      if (verbose) {
+        cat("LINE 43\n")
+      }
       find_pattern_if_windows(file.ext, basedir, .reader)
     }
 
@@ -47,7 +51,9 @@ find_pattern_in <- function(file_contents,
   R_files <- Windows_Result$R_files
 
   if (is.null(Windows_Result) || shell_result != 0L) {
-    cat("Lines 50\n")
+    if (verbose) {
+      cat("Lines 50\n")
+    }
     if (!is.null(file.ext)) {
       if (missing(file_pattern)) {
         file_pattern <-

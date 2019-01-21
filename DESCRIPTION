@@ -1,9 +1,12 @@
 Package: hutilsInteractive
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Title: What the Package Does (one line, title case)
 Description: What the package does (one paragraph).
+Date: 2019-01-21
 Authors@R: person("First", "Last", , "first.last@example.com", c("aut", "cre"))
 License: What license it uses
 Encoding: UTF-8
+Imports: data.table, hutils, readr
 LazyData: true
 ByteCompile: true
+RoxygenNote: 6.1.1

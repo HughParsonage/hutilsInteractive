@@ -23,7 +23,7 @@ find_pattern_in(file_contents, basedir = ".", dir_recursive = TRUE,
 \item{use.OS}{Use the operating system to determine file list. Only available on Windows. If it fails, a fall-back option
 (using \code{dir}) is used.}
 
-\item{file_pattern}{A regular expression passed to \code{list.files(pattern = file.ext)}. 
+\item{file_pattern}{A regular expression passed to \code{list.files(pattern = file.ext)}.
 By default, \code{"\\.(R|r)(nw|md)?$"}, i.e. all R and Sweave files. (Does not have to be a file extension.)}
 
 \item{file.ext}{A file extension passed to the operating system if \code{use.OS} is used.}
